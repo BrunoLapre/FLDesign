@@ -1,10 +1,11 @@
 import React, {useEffect, useState } from 'react';
 import { ethers, Contract } from 'ethers';
 import {ACCESSTOKEN_ABI} from './abis/AccessTokenAbi'
+import deployedAddresses from './Addresses.json';
 
 declare let window: any;
 
-const MAT_ADDRESS = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707";
+const MAT_ADDRESS = deployedAddresses['Tokens#ModelAccessToken'];
 const MINTER_ROLE = ethers.keccak256(ethers.toUtf8Bytes("MINTER_ROLE"));
 
 const MATInterface = () => {

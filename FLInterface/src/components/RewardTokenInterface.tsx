@@ -1,10 +1,11 @@
 import React, {useEffect, useState } from 'react';
 import { ethers, Contract } from 'ethers';
 import {REWARDTOKEN_ABI} from './abis/RewardTokenAbi'
+import deployedAddresses from './Addresses.json';
 
 declare let window: any;
 
-const REWARDTOKEN_ADDRESS = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707";
+const REWARDTOKEN_ADDRESS = deployedAddresses['Tokens#FLRToken'];
 const MINTER_ROLE = ethers.keccak256(ethers.toUtf8Bytes("MINTER_ROLE"));
 
 const RewardTokenInterface = () => {

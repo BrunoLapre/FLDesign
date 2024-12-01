@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { ethers, Contract } from 'ethers';
 import {ORCHESTRATOR_ABI} from './abis/OrchestratorAbi';
-
+import deployedAddresses from './Addresses.json';
 declare let window: any;
 
-
-// You'll need to import your ABI and contract address
-const ORCHESTRATOR_ADDRESS = "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9";
+const ORCHESTRATOR_ADDRESS = deployedAddresses['Orchestrator#FLOrchestrator'];
 
 // translate status to strings
 const getStatusString = (statusCode: number): string => {
@@ -217,7 +215,7 @@ const handleFinishTask = async (taskId: string) => {
   const handleProposeTask = async () => {
       try {
           if (!window.ethereum) {
-              throw new Error('Please install MetaMask');
+              throw new Error('Please install a wallet');
           }
 
           const participantArray = participants
@@ -284,7 +282,7 @@ const handleFinishTask = async (taskId: string) => {
 
   return (
       <div style={{ maxWidth: '600px', margin: '20px auto', padding: '20px' }}>
-          <h2>Propose New Task</h2>
+          <h2>Propose New FL Task</h2>
           
           <div style={{ marginBottom: '15px' }}>
               <label>
@@ -302,7 +300,7 @@ const handleFinishTask = async (taskId: string) => {
 
           <div style={{ marginBottom: '15px' }}>
               <label>
-                  Reward Pool (in ETH):
+                  Reward Pool - Total Tokens:
                   <br />
                   <input
                       type="number"

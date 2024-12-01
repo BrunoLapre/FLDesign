@@ -21,7 +21,8 @@ interface ITask {
 }
 
 interface IRewardsCalculator {
-    function calculateRewards(        uint256 taskId,
+    function calculateRewards( 
+        uint256 taskId,
         address[] calldata participants,
         uint256[] calldata finalScores,
         uint256 flrTokenPool,

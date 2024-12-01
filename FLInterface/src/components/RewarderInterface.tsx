@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { ethers, Contract } from 'ethers';
 import {REWARDER_ABI} from './abis/RewarderAbi';
+import deployedAddresses from './Addresses.json';
 
 declare let window: any;
 
-const REWARDER_ADDRESS = "0x1613beB3B2C4f22Ee086B2b38C1476A3cE7f78E8";
+const REWARDER_ADDRESS = deployedAddresses['Rewarder#FLRewarder'];
 
 const RewarderInterface = () => {
   const [taskId, setTaskId] = useState('');
@@ -137,11 +138,9 @@ const handleGetFinalScore = async () => {
         );
 
         setStatus('Claiming rewards...');
-        try {const tx = await contract.claimRewards(taskId)
-          await tx.wait();
-        }
+        const tx = await contract.claimRewards(taskId);
+        await tx.wait();            
         
-        catch (e) {console.log(e)}
         setStatus('Rewards claimed successfully');
 
     } catch (err) {
